@@ -1,0 +1,29 @@
+version: "3.9"
+
+networks: 
+  mynetwork:
+
+services:
+  server:
+    image: stream-recording-server:1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: server
+    restart: always
+    tty: true
+    volumes:
+      # - ./app:/app
+      - ./data:/data
+    environment:
+      - CAM_NAME=${CAM_NAME:-camera1}
+      - CAM_RECORDINGS_PATH=${CAM_RECORDINGS_PATH:-/data/recordings}
+      - CAM_RECORDINGS_MAX_SIZE=${CAM_RECORDINGS_MAX_SIZE:-10}
+      - CAM_VIDEO_STREAM=${CAM_VIDEO_STREAM}
+      - CAM_VIDEO_RECORDING_DURATION=${CAM_VIDEO_RECORDING_DURATION:-180}
+      - CAM_VIDEO_RECORDING_FPS=${CAM_VIDEO_RECORDING_FPS:-30}
+      - CAM_IMAGE_STREAM=${CAM_IMAGE_STREAM}
+      - CAM_IMAGE_INTERVAL=${CAM_IMAGE_INTERVAL:-30}
+      - CAM_IMAGE_QUALITY=${CAM_IMAGE_QUALITY:-15}
+    networks: 
+     - mynetwork
