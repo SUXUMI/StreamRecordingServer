@@ -72,4 +72,4 @@ server  | Purge service started
 </pre>
 
 ## Use prebuilt image
-Check the docker source: [https://hub.docker.com/repository/docker/suxumi/stream-recording-server](https://hub.docker.com/repository/docker/suxumi/stream-recording-server)
+Check the docker source: [https://hub.docker.com/r/suxumi/stream-recording-server](https://hub.docker.com/r/suxumi/stream-recording-server)
