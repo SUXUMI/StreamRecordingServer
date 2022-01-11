@@ -50,7 +50,13 @@ try:
         if image_stream_command:
             executor.submit(StreamRecorder(image_stream_command).start)
 
-        executor.submit(PurgeDirectoryService(dir = RECORDINGS_PATH, max_size = RECORDINGS_MAX_SIZE).start)
+        # start purge service
+        if RECORDINGS_MAX_SIZE:
+            executor.submit(
+                PurgeDirectoryService(
+                    dir=RECORDINGS_PATH, max_size=RECORDINGS_MAX_SIZE
+                ).start
+            )
     pass
 except Exception as e:
     print("INIT ERROR:", str(e))

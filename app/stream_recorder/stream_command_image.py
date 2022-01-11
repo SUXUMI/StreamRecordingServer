@@ -70,7 +70,7 @@ class StreamCommandImage(StreamCommand):
         
         self.options += ' -frames:v 1 -q:v ' + str(self.quality)
 
-        cmd = f'ffmpeg -y -rtsp_transport tcp -i "{self.stream_uri}" -loglevel {self.loglevel} {self.options} "{path_full}"'
+        cmd = f'ffmpeg -y -rtsp_transport tcp -i "{self.stream_uri}" -r 1 -loglevel {self.loglevel} {self.options} "{path_full}"'
 
         return cmd
     
