@@ -5,7 +5,7 @@ networks:
 
 services:
   server:
-    image: stream-recording-server:1
+    image: suxumi/stream-recording-server:1
     build:
       context: .
       dockerfile: ./Dockerfile
